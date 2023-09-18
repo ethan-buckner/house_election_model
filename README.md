@@ -1,11 +1,11 @@
 # Group 1 - Project 1, Predicting House Election Results 
 ## Table of Contents
 - SRC
-- - placeholder
+  - placeholder
 - DATA
-- - placeholder
+  - placeholder
 - Figures
-- - placeholder
+  - placeholder
 
 ## SRC
 ### Installing/ Building our code

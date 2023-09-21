@@ -13,7 +13,16 @@
 
 ## DATA
 ### Dictionary
-
+| :Column Name: | :Definition: | 
+| -------- | -------- |
+| year | year in which the election was held |
+| state | Full name of candidate state |
+| district | This column displays the district number (ranging from 1 - 435). It is important to note that at-large districts are coded as 0 |
+| democrat_votes | votes received by this candidate for the Democratic party |
+| republican_votes | votes received by this candidate for this Republican party |
+| totalvotes | total number of votes cast for this election |
+| democrat_candidate | The name of the Democratic candidate as it appears in the House Clerk report |
+| republican_cadidate | The name of the Republican candidate as it appears in the House Clerk report |
 ## Figures
 ### figure 1
 ### figure 2

@@ -19,6 +19,12 @@
 ### figure 2
 
 ## References
+[1] Biographical Directory of the United States Congress. Biographical Directory. United States Congress.
+[Online]. Available: https://bioguide.congress.gov/search
+
+[2] MIT Election Data and Science Lab, 2022, "U.S. House 1976–2022".
+[Online]. Available: https://doi.org/10.7910/DVN/IG0UN2, Harvard Dataverse, V12, UNF:6:A6RSZvlhh8eRZ4+mvT/HRQ== [fileUNF]
+
 ### Previous Work
 - MI-1: https://docs.google.com/document/d/14slMy6rfthzj-fg_Ci6QtaI9SSjmyC3pHbzZSMs6yFs/edit?usp=sharing
 - MI-2: https://docs.google.com/document/d/16aHZvSn3PNeamnEEEplk4Cjra7g0ENP0EYV7q1gQ1mo/edit?usp=sharing

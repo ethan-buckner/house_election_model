@@ -13,7 +13,7 @@
 
 ## DATA
 ### Dictionary
-| :Column Name: | :Definition: | 
+| Column Name | Definition | 
 | -------- | -------- |
 | year | year in which the election was held |
 | state | Full name of candidate state |

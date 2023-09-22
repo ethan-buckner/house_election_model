@@ -1,0 +1,68 @@
+---
+title: "Project1"
+author: "Sophie Kikuchi"
+date: "2023-09-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+```{r}
+house <- read.csv("house_total.csv")
+```
+
+```{r}
+house1 <- house %>%
+  filter(party %in% c("DEMOCRAT", "REPUBLICAN"))
+
+house1
+```
+
+```{r}
+house1 <- subset(house1, select = -c(state_fips, state_cen, state_ic, office, stage, runoff, special, writein, mode, unofficial, version, fusion_ticket))
+
+```
+
+```{r}
+house2 <-house1 %>%
+  group_by(year, state, district) %>%
+  summarize(
+    democrat_votes = sum(ifelse(party == "DEMOCRAT", candidatevotes, 0)),
+    republican_votes = sum(ifelse(party == "REPUBLICAN", candidatevotes, 0)),
+    totalvotes = totalvotes,
+    democrat_candidate = first(candidate[party == "DEMOCRAT"]),
+    republican_candidate =first(candidate[party == "REPUBLICAN"])
+  ) %>%
+  ungroup()
+```
+```{r}
+house_unique <- house2 %>%
+  distinct()
+```
+
+```{r}
+write.csv(house_unique, "house_clean.csv", row.names = FALSE)
+```
+
+
+
+
+```{r}
+
+# Filter the rows with the highest percentage for each combination of year and district
+winners <- house %>%
+  group_by(year, state, district) %>%
+  filter(winner == max(winner)) %>%
+  ungroup()
+
+# View the result
+print(result)
+```
+

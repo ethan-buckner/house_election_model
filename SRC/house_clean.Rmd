@@ -15,7 +15,8 @@ library(dplyr)
 ```
 
 ```{r}
-house <- read.csv("house_total.csv")
+house <- read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/house.csv")
+head(house)
 ```
 
 ```{r}
@@ -44,12 +45,29 @@ house2 <-house1 %>%
 ```
 ```{r}
 house_unique <- house2 %>%
-  distinct()
+  distinct() %>%
+  filter(democrat_votes*10 > republican_votes & republican_votes*10 > democrat_votes) # Ensure both candidates received votes
+house_unique
 ```
 
 ```{r}
 write.csv(house_unique, "house_clean.csv", row.names = FALSE)
 ```
+
+```{r}
+dems = read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/democrats.csv")
+everyone_else = read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/else.csv")
+
+head(dems)
+```
+
+
+
+
+
+
+
+
 
 
 

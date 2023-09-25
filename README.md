@@ -9,6 +9,7 @@
 
 ## SRC
 ### Installing/ Building our code
+- Our 
 ### Usage
 
 ## DATA
@@ -26,10 +27,10 @@
 ## Figures
 | Figure | Takeaways | 
 | -------- | -------- |
-| ![Figure 1](Figures/Incumbency_Democrat_allyears.png) | year in which the election was held |
-| ![Figure 2](Figures/Incumbency_Republican_allyears.png) | year in which the election was held |
-| ![Figure 3](Figures/Incumbency_Democrat_Recent.png) | year in which the election was held |
-| ![Figure 4](Figures/Incumbency_Republican_Recent.png) | year in which the election was held |
+| ![Figure 1](Figures/Incumbency_Democrat_allyears.png) | This plot was used during the exploratory phase of this project and uses data from all years. Specifically, the bar graph shows the relationship between the average percentage that a Democratic candidate won the house election by and the number of times they have been re-elected. This was found by counting the number of times a candidate name was repeated, saving that value to a column, and then averaging the percentage_votes for all candidates re-elected the same number of times. We found that there is not a huge difference in the percentage of votes they bring in; however, there is a very slight positive trend that peaks at 20. |
+| ![Figure 2](Figures/Incumbency_Republican_allyears.png) | Similar to the previous figure, this figure was used for exploratory data analysis. The plot was created in the same manner as the first figure; however, it was filtered to only look at Republican candidates. This plot shows a stronger trend than with the Democratic party as there is a more clear positive trend between the percentage of votes a candidate gets and how many times they are elected. |
+| ![Figure 3](Figures/Incumbency_Democrat_Recent.png) | After looking more into the data, it is clear that we must subset the data so that there are consistent district lines between all elections. Therefore, this plot utilizes data from 2012-2020 with the number of repeated wins on the x-axis and democratic margin on the y-axis. The y-axis is found by finding  the total number of votes and then dividing the democratic votes by that amount. Therefore, we are able to see that a Democratic candidate wins by the highest amount of percentage points the more they are re-elected with an exception at two times.|
+| ![Figure 4](Figures/Incumbency_Republican_Recent.png) | This figure mirrors the previous figure; however, this time we are looking at the Republican party. Therefore, a negative number will represent this group and indicate the percentage points that the democratic party lost by. We were able to see that interestingly enough, candidates who are reelected three and four times have the greatest margin, mimicing more of a bell curve. |
 
 ## References
 [1] Biographical Directory of the United States Congress. Biographical Directory. United States Congress.

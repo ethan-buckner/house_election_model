@@ -22,7 +22,7 @@
 | republican_votes | votes received by this candidate for this Republican party |
 | totalvotes | total number of votes cast for this election |
 | democrat_candidate | The name of the Democratic candidate as it appears in the House Clerk report |
-| republican_cadidate | The name of the Republican candidate as it appears in the House Clerk report |
+| republican_candidate | The name of the Republican candidate as it appears in the House Clerk report |
 ## Figures
 ### figure 1
 ### figure 2

@@ -26,10 +26,10 @@
 ## Figures
 | Figure Name | Takeaways | 
 | -------- | -------- |
-| ![Figure 1](Incumbency_Democrat_allyears.png) | year in which the election was held |
-| ![Figure 2](Incumbency_Republican_allyears.png) | year in which the election was held |
-| ![Figure 3](Incumbency_Democrat_recent.png) | year in which the election was held |
-| ![Figure 4](Incumbency_Republican_recent.png) | year in which the election was held |
+| ![Figure 1](Figures/Incumbency_Democrat_allyears.png) | year in which the election was held |
+| ![Figure 2](Figures/Incumbency_Republican_allyears.png) | year in which the election was held |
+| ![Figure 3](Figures/Incumbency_Democrat_recent.png) | year in which the election was held |
+| ![Figure 4](Figures/Incumbency_Republican_recent.png) | year in which the election was held |
 
 ## References
 [1] Biographical Directory of the United States Congress. Biographical Directory. United States Congress.

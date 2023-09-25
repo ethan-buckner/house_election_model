@@ -9,7 +9,8 @@
 
 ## SRC
 ### Installing/ Building our code
-- The Rmd file that has been used to load the dataset, clean the data, and create new columns to support our final model is titled, "house_clean.rmd".
+- The Rmd file that has been used to load the house elections dataset, clean the data, and create new columns to support our final model is titled, "house_clean.rmd".
+- The coding file used to clean the biographical data is titled, "handle_biographic.ipynb".
   
 ### Usage
 

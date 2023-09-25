@@ -24,12 +24,12 @@
 | democrat_candidate | The name of the Democratic candidate as it appears in the House Clerk report |
 | republican_candidate | The name of the Republican candidate as it appears in the House Clerk report |
 ## Figures
-| Figure Name | Takeaways | 
+| Figure | Takeaways | 
 | -------- | -------- |
 | ![Figure 1](Figures/Incumbency_Democrat_allyears.png) | year in which the election was held |
 | ![Figure 2](Figures/Incumbency_Republican_allyears.png) | year in which the election was held |
-| ![Figure 3](Figures/Incumbency_Democrat_recent.png) | year in which the election was held |
-| ![Figure 4](Figures/Incumbency_Republican_recent.png) | year in which the election was held |
+| ![Figure 3](Figures/Incumbency_Democrat_Recent.png) | year in which the election was held |
+| ![Figure 4](Figures/Incumbency_Republican_Recent.png) | year in which the election was held |
 
 ## References
 [1] Biographical Directory of the United States Congress. Biographical Directory. United States Congress.

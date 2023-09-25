@@ -15,7 +15,9 @@
 ### Usage
 
 ## DATA
-### Dictionary
+- Note: The data dictionary is split into two sections based on the original source of the column (election dataset vs. biographical dataset). However, all the columns included in the data dictionary were used in the final analysis and joining of the data.
+  
+### Election Dataset Dictionary
 | Column Name | Definition | 
 | -------- | -------- |
 | year | year in which the election was held |
@@ -26,6 +28,17 @@
 | totalvotes | total number of votes cast for this election |
 | democrat_candidate | The name of the Democratic candidate as it appears in the House Clerk report |
 | republican_candidate | The name of the Republican candidate as it appears in the House Clerk report |
+
+### Biographical Dataset Dictionary
+| Column Name | Definition | 
+| -------- | -------- |
+| UnaccentedGivenName | unaccented first name of the candidate |
+| UnaccentedFamilyName | unaccented last name of the candidate |
+| congressNumber | unique identifer for candidate to distinguish within the same state |
+| stateName | U.S. postal code state abbreviation |
+| parties | Political party affiliation (either Democrat or Republican) |
+| electionYear | Year during with the candidate ran for House of Representatives |
+| ageDuringElection | Age of candidate when elected (calculated by subtracting electionYear from birthYear) |
 ## Figures
 | Figure | Takeaways | 
 | -------- | -------- |

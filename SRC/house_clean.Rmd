@@ -1,6 +1,6 @@
 ---
 title: "Project1"
-author: "Sophie Kikuchi"
+author: "Sophie Kikuchi, Ethan Buckner, and Olivia Conner"
 date: "2023-09-20"
 output: html_document
 ---
@@ -9,16 +9,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Preliminary manipulation of the data
 ```{r}
 library(tidyverse)
 library(dplyr)
 ```
 
 ```{r}
-house <- read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/house.csv")
-head(house)
+house <- read.csv("house_total.csv")
 ```
 
+## Data Cleaning
 ```{r}
 house1 <- house %>%
   filter(party %in% c("DEMOCRAT", "REPUBLICAN"))
@@ -45,42 +46,165 @@ house2 <-house1 %>%
 ```
 ```{r}
 house_unique <- house2 %>%
-  distinct() %>%
-  filter(democrat_votes*10 > republican_votes & republican_votes*10 > democrat_votes) # Ensure both candidates received votes
-house_unique
+  distinct()
 ```
 
 ```{r}
 write.csv(house_unique, "house_clean.csv", row.names = FALSE)
 ```
 
+## Creation of New Columns 
 ```{r}
-dems = read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/democrats.csv")
-everyone_else = read.csv("/Users/ethanbuckner/Development/dsproject/project1/DS4002-Project1/DATA/else.csv")
 
-head(dems)
+# Finding margin of votes (positive = Democrat win, negative = Republican win)
+house_unique <- house_unique %>%
+  rowwise() %>%
+  mutate(excess_dem_votes = democrat_votes - republican_votes)
+
+# Creating column with total number of votes
+house_unique <- house_unique %>%
+  rowwise() %>%
+  mutate(total_demrep_votes = democrat_votes + republican_votes)
+
+# Creating a column of democrativ margin
+house_unique <- house_unique %>%
+  rowwise() %>%
+  mutate(dem_margin = excess_dem_votes/total_demrep_votes)
+
+# Eliminating rows where a candidate ran unopposed
+house_filtered <- house_unique %>%
+  filter(dem_margin != 1 & dem_margin != -1)
+
+write.csv(house_filtered, "house_clean_new.csv", row.names = FALSE)
+
+```
+
+## Creating a "winner" Column
+```{r}
+house_unique <- house_unique %>%
+  rowwise() %>%
+  mutate(winner = ifelse(democrat_votes >= republican_votes, "Democrat", "Republican"))
+
+
+# Print the result
+print(house_clean)
+```
+
+## Adding a column to the main dataset showing the percentage of votes that the winning candidate had
+```{r}
+
+house_unique$winner_percentage <- ifelse(house_unique$winner == "Democrat", house_unique$democrat_votes / house_unique$totalvotes, house_unique$republican_votes / house_unique$totalvotes)
+
+```
+
+# Exploratory Analysis
+
+## Filtering the total data set to only show from 2012 - 2020 data (fit in with our question)
+```{r}
+house_unique_recent <- house_unique %>%
+  filter(year >= 2012, year <= 2020)
+```
+
+## Finding the number of repeat elected candidates by Party (democrat)
+```{r}
+
+# Filter rows where the winner is "Democrat"
+democrat_winners <- house_unique_recent[house_unique_recent$winner == "Democrat", ]
+
+# Calculate the count of wins for each Republican candidate
+win_countd <- table(democrat_winners$democrat_candidate)
+
+avg_percentage_d <- tapply(democrat_winners$winner_percentage, democrat_winners$democrat_candidate, mean)
+
+# Create a data frame with candidate names and their win counts
+result_data_d <- data.frame(
+  candidate_name = names(win_countd),
+  win_count = as.vector(win_countd),
+  avg_percentage = avg_percentage_d
+)
+
+write.csv(result_data_d, "house_democrat_imcumbent.csv", row.names = FALSE)
+
+```
+
+## Finding the number of repeat elected candidates by Party (republican)
+```{r}
+
+# Filter rows where the winner is "Republican"
+republican_winners <- house_unique_recent[house_unique_recent$winner == "Republican", ]
+
+# Calculate the count of wins for each Republican candidate
+win_countr <- table(republican_winners$republican_candidate)
+
+avg_percentage <- tapply(republican_winners$dem_margin, republican_winners$republican_candidate, mean)
+
+# Create a data frame with candidate names and their win counts
+result_data_r <- data.frame(
+  candidate_name = names(win_countr),
+  win_count = as.vector(win_countr),
+  avg_percentage = avg_percentage
+)
+
+write.csv(result_data_r, "house_republican_imcumbent.csv", row.names = FALSE)
+```
+
+## Graph of Average Percentage points that Democrats won by vs. # of repeated wins
+```{r}
+
+average_by_wins_d <- aggregate(avg_percentage ~ win_count, result_data_d, mean)
+
+# Create a bar graph using ggplot2
+ggplot(average_by_wins_d, aes(x = win_count, y = avg_percentage)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  labs(
+    title = "Average Percentage Points vs. Number of Repeat Wins for Democrat Party",
+    x = "Number of Repeat Wins",
+    y = "Average Percentage Points that Democrats won by"
+  ) +
+  theme_minimal()
+```
+
+## Graph of Average Percentage points that Democrats lost by vs. # of repeated wins
+```{r}
+average_by_wins_r <- aggregate(avg_percentage ~ win_count, result_data_r, mean)
+
+
+# Create a bar graph using ggplot2
+ggplot(average_by_wins_r, aes(x = win_count, y = avg_percentage)) +
+  geom_bar(stat = "identity", fill = "red") +
+  labs(
+    title = "Average Percentage Points vs. Number of Repeat Wins for Republican Party",
+    x = "Number of Repeat Wins",
+    y = "Percentage points that Democrats lost by"
+  ) +
+  theme_minimal()
 ```
 
 
-
-
-
-
-
-
-
-
-
-
+## Calculating leans by state and district for all years
 ```{r}
+state_leans_by_district <- house_filtered %>%
+  group_by(state, district) %>%
+  summarize(avg_dem_margin = mean(dem_margin, na.rm = TRUE))
 
-# Filter the rows with the highest percentage for each combination of year and district
-winners <- house %>%
-  group_by(year, state, district) %>%
-  filter(winner == max(winner)) %>%
-  ungroup()
+write.csv(state_leans_by_district, "house_leans_all.csv", row.names = FALSE)
+```
+## Calculating leans by state and district for years 2012-2018 
+```{r}
+state_leans_by_district_2012 <- house_filtered %>%
+  filter(year >= 2012 & year <= 2020) %>%
+  group_by(state, district) %>%
+  summarize(avg_dem_margin = mean(dem_margin, na.rm = TRUE))
 
-# View the result
-print(result)
+write.csv(state_leans_by_district_2012, "house_leans_recent.csv", row.names = FALSE)
+```
+
+
+# Extra Code
+
+## Data set with just the 2022 Data
+```{r}
+house_2022 <- house_unique %>%
+  filter(year == 2022)
 ```
 

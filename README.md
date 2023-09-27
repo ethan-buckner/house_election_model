@@ -23,6 +23,7 @@
 | model_training.ipynb | This notebook uses sklearn to train and tune a random forest regressor model |
   
 ### Usage
+To use this model, first unpickle it. Then call the sklearn method predict(data) to get predictions.
 
 ## DATA
 - Note: The data dictionary is split into three sections. The first two sections are based on the original source of the data and defines columns that were used in calculations to create the final dataset (election dataset vs. biographical dataset). The third section includes all the columns included in the training dataset that is used in the final analysis and model.

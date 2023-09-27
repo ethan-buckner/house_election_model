@@ -15,7 +15,7 @@
 ### Usage
 
 ## DATA
-- Note: The data dictionary is split into two sections based on the original source of the column (election dataset vs. biographical dataset). However, all the columns included in the data dictionary were used in the final analysis and joining of the data.
+- Note: The data dictionary is split into three sections. The first two sections are based on the original source of the data and columns that were used in calculations to create the final dataset (election dataset vs. biographical dataset). The third section includes all the columns included in the training dataset that is used in the final analysis and model.
   
 ### Election Dataset Dictionary
 | Column Name | Definition | 
@@ -39,6 +39,20 @@
 | parties | Political party affiliation (either Democrat or Republican) |
 | electionYear | Year during with the candidate ran for House of Representatives |
 | ageDuringElection | Age of candidate when elected (calculated by subtracting electionYear from birthYear) |
+
+### Training Dataset Dictionary
+| Column Name | Definition | 
+| -------- | -------- |
+| year | Election year |
+| state | U.S. postal code state abbreviation |
+| previous_winner_age | Age of the winner of the last election at the time |
+| incumbent | Name of party who won the election |
+| incubency_count | Incremental count of the amount of continuous elections won by a political party |
+| avg_dem_margin_4 | Average dem margin of the last 4 elections |
+| avg_total_votes_4 | Average number of votes for the last 4 elections |
+| party_flips_4 | Number of times there was a party switch in the previous 4 elections |
+| dem_margin | Label that we are predicting, but this column contains the actual dem_margin for that year and state |
+
 ## Figures
 | Figure | Takeaways | 
 | -------- | -------- |

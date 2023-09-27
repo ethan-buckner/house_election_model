@@ -1,0 +1,68 @@
+---
+title: "Project 1 Visuals"
+author: "Sophie Kikuchi"
+date: "2023-09-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+```{r}
+training <- read_csv("training.csv")
+```
+```{r}
+# Sum the incumbency_count for each year
+agg_data <- aggregate(incumbency_count ~ year, data=training, sum)
+
+# Plot
+ggplot(agg_data, aes(x=year, y=incumbency_count)) +
+  geom_col() + # For bar plot
+  labs(title = "Total Incumbency by Year",
+       x = "Year",
+       y = "Total Incumbency") +
+  theme_minimal()
+```
+
+```{r}
+# Sum the incumbency_count for each year
+agg_data_mean <- aggregate(incumbency_count ~ year, data=training, mean)
+
+# Plot
+ggplot(agg_data_mean, aes(x=year, y=incumbency_count)) +
+  geom_col(fill = "navy") + # For bar plot
+  labs(title = "Average Incumbency by Year",
+       x = "Year",
+       y = "Average Incumbency") +
+  theme_minimal()
+```
+```{r}
+incumbency_data_mean <- aggregate(incumbency_count ~ previous_winner_age, data=training, mean)
+
+
+ggplot(incumbency_data_mean, aes(x= previous_winner_age, y = incumbency_count)) +
+  geom_col(fill = "darkorange") + # For bar plot
+  labs(title = "Average Incumbency by Candidate Age",
+       x = "Candidate Age",
+       y = "Average Incumbency") +
+  theme_minimal()
+```
+```{r}
+avg_age <- training %>%
+  group_by(state) %>%
+  summarise(average_age = mean(previous_winner_age))
+
+ggplot(avg_age, aes(x= state, y = average_age)) +
+  geom_col() +
+  labs(title = "Average winner age by state", x = "State", y = "Average Age") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 5))
+```
+
+

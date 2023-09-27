@@ -1,7 +1,7 @@
 # Group 1 - Project 1, Predicting House Election Results 
 ## Table of Contents
 - SRC
-  - This folder contains all of the source code for our project. Currently, this folder contains the code that was used to clean the house dataset, create new columns to calculate the lean margin, election winner, and visualize these trends.
+  - This folder contains all of the source code for our project. Currently, this folder contains the code that was used to clean the house dataset, create new columns to calculate the lean margin, election winner, and visualize these trends. It also includes the archive of our final model
 - DATA
   - This folder is where we store all datasets being used for this project. Specifically it contains both the raw datasets and cleaned versions that will be used in the final analysis.
 - Figures

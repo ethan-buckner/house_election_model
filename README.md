@@ -22,9 +22,9 @@
 | -------- | -------- |
 | house.csv | This is the raw data of the 1976-2022 U.S. House of Representatives elections. |
 | house_biographic.csv | This is the raw data of the biographical directory of the U.S. House of Representatives. |
-| house_clean.csv | This is the cleaned, manipulated, and combined dataset of the the information in house.csv and house_biographic.csv |
-| house_leans_recent.csv | This is U.S. House of Representative data  from 2012-2020 including the average percentage point margins that the democratic party won by in all the districts. |
-| training.csv | This is our fully trained file.
+| house_clean.csv | This is the cleaned, manipulated, and combined dataset of the information in house.csv and house_biographic.csv |
+| house_leans_recent.csv | This is U.S. House of Representative data from 2012-2020 including the average percentage point margins that the democratic party won by in all the districts. |
+| training.csv | This is our fully trained file. |
 
   
 ### Election Dataset Dictionary

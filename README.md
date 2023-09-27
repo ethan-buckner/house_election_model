@@ -8,9 +8,19 @@
   - Currently this folder contains exploratory plots looking into how incumbency impacts the amount of votes a candidate receives as well as how incumbency relates to the amount of percentage points that a candidate will win by broken down by party. As we move forward with our analysis, we will include figures as they relate to the final model.
 
 ## SRC
+
 ### Installing/ Building our code
-- The Rmd file that has been used to load the house elections dataset, clean the data, and create new columns to support our final model is titled, "house_clean.rmd".
-- The coding file used to clean the biographical data is titled, "handle_biographic.ipynb".
+- It is recommended to run the notebook files in an IDE that supports both Jupyter Notebooks and R markdown files such as Pycharm.
+- These files use the 'tidyverse' and 'dplyr' R libraries and the json, re, pickle, numpy, pandas and sklearn Python libraries
+- File paths may be incorrect on your machine, you are recommended to check all file paths before running.
+
+### Notebook Files
+| Notebook Name | Decription |
+| -------- | -------- |
+| handle_biographic.ipynb | This notebook cleans the raw biographic dataset |
+| house_clean.Rmd | This notbook cleans the house elections dataset |
+| name_matching.ipynb | This notbook combines the two datasets, handles edge cases, and produces the training dataset |
+| model_training.ipynb | This notebook uses sklearn to train and tune a random forest regressor model |
   
 ### Usage
 

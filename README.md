@@ -21,6 +21,7 @@
 | house_clean.Rmd | This notbook cleans the house elections dataset |
 | name_matching.ipynb | This notbook combines the two datasets, handles edge cases, and produces the training dataset |
 | model_training.ipynb | This notebook uses sklearn to train and tune a random forest regressor model |
+| project1_visuals.Rmd | This notebook creates all of the exploratory plots utilizing the training data set |
   
 ### Usage
 To use this model, first unpickle it. Then call the sklearn method predict(data) to get predictions.
